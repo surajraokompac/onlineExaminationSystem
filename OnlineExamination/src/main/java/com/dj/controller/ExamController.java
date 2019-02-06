@@ -1,23 +1,27 @@
 package com.dj.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dj.domain.Employee;
 import com.dj.service.EmployeeService;
 
-@Controller
+@RestController
 @RequestMapping("/dj")
 public class ExamController {
 	@Autowired
@@ -49,7 +53,16 @@ public class ExamController {
 		System.out.println("controller::"+employeeList);
 		return new ModelAndView("displayList", "employeeList", employeeList);
 	}
-	@RequestMapping(value="/edit/{eid}",method=RequestMethod.GET)
+	
+	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE, value="/suraj")
+	public @ResponseBody List<String> getjson() {
+		ArrayList<String> arrayList = new ArrayList<String>();
+		arrayList.add("suraj");
+		arrayList.add("vikas");
+		return arrayList;
+	}
+	
+	/*@RequestMapping(value="/edit/{eid}",method=RequestMethod.GET)
 	public ModelAndView edit(@PathVariable("eid") Integer eid) {
 		System.out.println("chits::"+employee);
 		return null;
@@ -63,5 +76,5 @@ public class ExamController {
 	  model.addObject("customerForm", customer);
 	  
 	  return model;
-	
+	}*/
 }
