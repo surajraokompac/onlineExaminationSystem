@@ -1,9 +1,7 @@
 package com.dj.daoImpl;
 
 import java.util.List;
-import java.util.logging.Logger;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.dj.dao.EmployeeDao;
 import com.dj.domain.Employee;
+
+
 @Repository
 public class EmployeeDaoImpl implements  EmployeeDao {
 	@Autowired
